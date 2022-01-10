@@ -4,13 +4,17 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-  let startIndex = 0;
-  let nextIndex = startIndex++;
+  let currentIndex = 0;
+  let nextIndex = 1;
 
-  while (nums[startIndex] + nums[nextIndex] !== target) {
-    startIndex += 1;
-    nextIndex += 1;
+  while (nums[currentIndex] + nums[nextIndex] !== target) {
+    if (nextIndex === nums.length - 1) {
+      currentIndex++;
+      nextIndex = currentIndex + 1;
+    } else {
+      nextIndex++;
+    }
   }
 
-  return [startIndex, nextIndex];
+  return [currentIndex, nextIndex];
 };
